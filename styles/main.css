@@ -86,6 +86,7 @@ main {
 section {
 	flex-basis: 75%;
 	padding-left: .5em;
+	border-bottom: 2px solid var(--accent-color);
 	& img {
 		width: clamp(100px, 50%, 250px);
 		float: right;
@@ -184,3 +185,21 @@ footer {
 
 .menu > li:first-child a { margin-left: 0; }
 .menu > li:last-child a { margin-right: 0; }
+
+@media screen and (max-width: 900px){
+	/* the styles for the main content */
+main {
+	flex-direction: row;
+}
+
+/* the styles for the section */
+section {
+	flex-basis: 75%;
+	border-bottom: none;
+	}
+
+/* the styles for the aside */
+aside {
+	flex-basis: 25%;
+}
+}
