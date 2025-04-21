@@ -203,3 +203,24 @@ aside {
 	flex-basis: 25%;
 }
 }
+@media screen and (max-width: 767px){
+	.menu {
+		position: absolute;
+		left: 0;
+		background-color: var(--accent-color);
+		width: 40%;
+		display: none;
+		}
+	
+	.menu-btn {
+		display: block;
+
+		
+	}
+	.menu-btn::after {
+		content: "\2630"; /* unicode for hamburger menu */
+	}
+	.navbar {
+		position: relative;
+	}
+}
