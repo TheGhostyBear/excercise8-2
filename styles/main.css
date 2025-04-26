@@ -193,7 +193,6 @@ footer {
     display: none;
 }
 
-/* Style for menu button */
 .menu-btn {
     display: block;
     background-color: var(--accent-color);
@@ -207,12 +206,12 @@ footer {
     content: "\2630"; /* hamburger menu */
 }
 
-/* Show menu when checkbox is checked */
+
 .menu-checkbox:checked ~ .menu {
     display: block;
 }
 
-/* Change hamburger to X when menu is open */
+
 .menu-checkbox:checked ~ .menu-btn::after {
     content: "\2715"; /* X symbol */
 }
@@ -221,18 +220,15 @@ footer {
 .menu > li:last-child a { margin-right: 0; }
 
 @media screen and (max-width: 900px){
-	/* the styles for the main content */
 main {
 	flex-direction: row;
 }
 
-/* the styles for the section */
 section {
 	flex-basis: 75%;
 	border-bottom: none;
 	}
 
-/* the styles for the aside */
 aside {
 	flex-basis: 25%;
 }
@@ -256,6 +252,12 @@ aside {
 	}
 	.navbar {
 		position: relative;
+	}
+	header {
+		text-align: left;
+		& img {
+			display: block;
+		}
 	}
 }
 
@@ -301,7 +303,7 @@ aside {
     .menu > li:first-child a { margin-left: 0; }
     .menu > li:last-child a { margin-right: 0; }
     
-    /* Make sure menu is visible when transitioning from mobile to desktop */
+    /* Makes sure menu is visible when transitioning from mobile to desktop */
     .menu-checkbox:checked ~ .menu {
         display: flex;
     }
