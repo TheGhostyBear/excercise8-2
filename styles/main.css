@@ -133,54 +133,88 @@ footer {
 
 /* styles for the menu */
 .menu {
-	display: flex;
-	flex-wrap: wrap;
-	& li { 
-		flex-basis: 20%; 
-		text-align: center;
-	}
+    position: absolute;
+    left: 0;
+    background-color: var(--accent-color);
+    width: 40%;
+    display: none;
 }
 
 .navbar {
-	clear: left;
-	background-color: var(--accent-color);
-	& a {
-		display: block;
-		padding: 1em;
-		text-decoration: none;
-		margin: 0 1px 2px;
-	}
-	& a:link, a:visited { 
-		color: var(--light_menu);
-	}
-	& a:hover, a:focus, a.current {
-		background-color: var(--mid_menu);
-		color: var(--dark_menu);
-	}
-	& ul {
-		list-style-type: none;
-		padding: 0;
-		margin: 0;
-	}
+    position: relative;
+    clear: left;
+    background-color: var(--accent-color);
+    & a {
+        display: block;
+        padding: 1em;
+        text-decoration: none;
+        margin: 0 2px 2px 0;
+    }
+    & a:link, a:visited { 
+        color: var(--light_menu);
+    }
+    & a:hover, a:focus, a.current {
+        background-color: var(--mid_menu);
+        color: var(--dark_menu);
+    }
+    & ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
 }
 
 .submenu {
-	position: relative;
-	& small { margin-left: .25em; }
+    position: relative;
+    & small { margin-left: .25em; }
+}
+
+.submenu > a > small::after {
+    content: "\25B6"; /* right triangle */
 }
 
 .dropdown {
-	position: absolute;
-	left: 0;
-	right: 0;
-	background-color: var(--accent-color);
-	color: var(--light_menu);
-	display: none;
-	& > li a { margin: 0 2px 2px; }
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 100%;
+    background-color: var(--accent-color);
+    color: var(--light_menu);
+    display: none;
+    & > li a { margin: 2px; }
 }
 
 .submenu:hover > .dropdown {
-	display: block;
+    display: block;
+}
+
+/* Hide checkbox */
+.menu-checkbox {
+    display: none;
+}
+
+/* Style for menu button */
+.menu-btn {
+    display: block;
+    background-color: var(--accent-color);
+    color: var(--light_menu);
+    text-align: center;
+    padding: 0.5em;
+    cursor: pointer;
+}
+
+.menu-btn::after {
+    content: "\2630"; /* hamburger menu */
+}
+
+/* Show menu when checkbox is checked */
+.menu-checkbox:checked ~ .menu {
+    display: block;
+}
+
+/* Change hamburger to X when menu is open */
+.menu-checkbox:checked ~ .menu-btn::after {
+    content: "\2715"; /* X symbol */
 }
 
 .menu > li:first-child a { margin-left: 0; }
@@ -223,4 +257,52 @@ aside {
 	.navbar {
 		position: relative;
 	}
+}
+
+/* Media query for larger screens */
+@media screen and (min-width: 768px) {
+    .menu {
+        position: relative;
+        display: flex;
+        width: 100%;
+        left: auto;
+        & li { 
+            flex-basis: 20%; 
+            text-align: center;
+        }
+    }
+    
+    .menu-btn {
+        display: none;
+    }
+    
+    .submenu {
+        position: relative;
+        & small { margin-left: .25em; }
+    }
+    
+    .submenu > a > small::after {
+        content: "\25BC"; /* down triangle */
+    }
+    
+    .dropdown {
+        position: absolute;
+        top: auto;
+        left: 0;
+        right: 0;
+        width: auto;
+        & > li a { margin: 0 2px 2px; }
+    }
+    
+    .navbar a {
+        margin: 0 1px 2px;
+    }
+    
+    .menu > li:first-child a { margin-left: 0; }
+    .menu > li:last-child a { margin-right: 0; }
+    
+    /* Make sure menu is visible when transitioning from mobile to desktop */
+    .menu-checkbox:checked ~ .menu {
+        display: flex;
+    }
 }
